@@ -14,10 +14,11 @@ get_header();
 <section class="hi-hero" id="top">
 <div class="hi-container hi-hero__inner">
     <div class="hi-hero__copy">
-    <span class="hi-eyebrow">— Plateforme d'investissement indépendante</span>
+    <span class="hi-eyebrow"><span class="line"></span> Plateforme d'investissement indépendante</span>
     <h1 class="hi-hero__title">
-        Investir avec exigence.<br>
-        Construire avec <span class="hi-accent">impact</span>.
+        Investir avec <br> exigence. <br>
+        Construire avec <br>
+        <span class="hi-accent">impact.</span>
     </h1>
     <p class="hi-hero__text">
         Une plateforme d'investissement indépendante alliant rigueur financière et
@@ -56,21 +57,20 @@ get_header();
 <!-- ============ APPROCHE EN DEUX TEMPS ============ -->
 <section class="hi-section hi-section--tint" id="strategie">
 <div class="hi-container">
-    <span class="hi-eyebrow">— Notre méthode</span>
-    <h2 class="hi-h2 hi-h2--spaced">Une approche en deux temps</h2>
+    <span class="hi-eyebrow hi-eyebrow--strategy"><span class="hi-eyebrow__num">02</span> Notre stratégie</span>
+    <h2 class="hi-h2 hi-h2--spaced hi-strategy__title">Une approche en deux temps</h2>
 
-    <div class="hi-grid-2">
+    <div class="hi-grid-2 hi-grid-2--strategy">
     <article class="hi-step-card">
         <span class="hi-step-card__num">1</span>
         <h3>Développer nos actifs avec rigueur et expertise</h3>
         <p>
-        Nous identifions et structurons des opportunités d'investissement à forte
-        valeur ajoutée, en nous appuyant sur une analyse rigoureuse des fondamentaux.
+        En portant une attention particulière aux secteurs de la
+        <strong>technologie</strong>, de l'<strong>industrie</strong> et des <strong>services aux entreprises</strong>.
         </p>
-        <ul class="hi-tags">
-        <li>Technologie</li>
-        <li>Industrie</li>
-        <li>Services financiers</li>
+        <ul class="hi-strategy-list">
+        <li>Nous investissons de manière ciblée à travers des <strong>fonds</strong>, en travaillant en partenariat étroit avec des équipes de confiance.</li>
+        <li>Nous investissons <strong>en direct</strong> dans des entreprises, toujours dans une logique d'accompagnement long terme.</li>
         </ul>
     </article>
 
@@ -78,14 +78,15 @@ get_header();
         <span class="hi-step-card__num">2</span>
         <h3>Déployer une stratégie philanthropique</h3>
         <p>
-        En parallèle, nous engageons une part de notre capital au service de causes
-        qui nous tiennent à cœur, avec la même rigueur que nos investissements.
+        En agissant dans l'éducation, la santé, le journalisme de qualité,
+        l'environnement et le progrès social.
         </p>
         <ul class="hi-tags">
         <li>Éducation</li>
         <li>Santé</li>
         <li>Journalisme</li>
         <li>Environnement</li>
+        <li>Progrès social</li>
         </ul>
     </article>
     </div>
@@ -95,12 +96,14 @@ get_header();
 <!-- ============ VALEURS ============ -->
 <section class="hi-section" id="valeurs">
 <div class="hi-container">
-    <span class="hi-eyebrow">— Nos valeurs</span>
+    <span class="hi-eyebrow hi-eyebrow--values"><span class="hi-eyebrow__num">03</span> Valeurs</span>
     <h2 class="hi-h2 hi-h2--spaced">Des valeurs ancrées dans notre histoire</h2>
     <p class="hi-section__lede">
     Helium Invest est une entreprise familiale indépendante portée par des valeurs
     fortes : transparence, rigueur et engagement durable sur le long terme.
     </p>
+
+    <div class="hi-values-layout">
 
     <div class="hi-accordion" id="hiValeurs">
     <div class="hi-accordion__item is-open">
@@ -140,6 +143,7 @@ get_header();
             nous plaçons la responsabilité au cœur de toutes nos décisions.
         </p>
         </div>
+    </div>
     </div>
     </div>
 </div>
@@ -280,7 +284,7 @@ jQuery(function ($) {
   });
 
   /* ----- Accordion (Valeurs) ----- */
-  function setAccordionHeight($item, animate) {
+    function setAccordionHeight($item) {
     var $body = $item.find('.hi-accordion__body');
     if ($item.hasClass('is-open')) {
       $body.css('max-height', $body.prop('scrollHeight') + 'px');
@@ -289,14 +293,65 @@ jQuery(function ($) {
     }
   }
 
+    function renderValuesAside() {
+        var $aside = $('#hiValeursAside');
+        var $items = $('#hiValeurs .hi-accordion__item');
+
+        if (!$aside.length || !$items.length) { return; }
+
+        var html = '';
+        $items.not('.is-open').each(function () {
+            var $item = $(this);
+            var idx = $item.attr('data-value-index');
+            var title = $.trim($item.find('.hi-accordion__head span').first().text());
+            var text = $.trim($item.find('.hi-accordion__body p').first().text());
+
+            html += '<button class="hi-value-card" type="button" data-open-value="' + idx + '">';
+            html += '<span class="hi-value-card__title">' + title + '</span>';
+            html += '<span class="hi-value-card__text">' + text + '</span>';
+            html += '</button>';
+        });
+
+        $aside.html(html);
+    }
+
+    function openAccordionItem($target) {
+        var $items = $('#hiValeurs .hi-accordion__item');
+
+        $items.each(function () {
+            var $item = $(this);
+            var isTarget = $item.is($target);
+            $item.toggleClass('is-open', isTarget);
+            $item.find('.hi-accordion__head').attr('aria-expanded', isTarget ? 'true' : 'false');
+            setAccordionHeight($item);
+        });
+
+        renderValuesAside();
+    }
+
   $('#hiValeurs .hi-accordion__item').each(function () {
+        var $item = $(this);
+        $item.attr('data-value-index', $(this).index());
+        $item.find('.hi-accordion__head').attr('aria-expanded', $item.hasClass('is-open') ? 'true' : 'false');
     setAccordionHeight($(this));
   });
 
+    if (!$('#hiValeurs .hi-accordion__item.is-open').length) {
+        $('#hiValeurs .hi-accordion__item').first().addClass('is-open');
+    }
+
+    renderValuesAside();
+
   $('#hiValeurs .hi-accordion__head').on('click', function () {
-    var $item = $(this).closest('.hi-accordion__item');
-    $item.toggleClass('is-open');
-    setAccordionHeight($item);
+        openAccordionItem($(this).closest('.hi-accordion__item'));
+    });
+
+    $('#hiValeursAside').on('click', '[data-open-value]', function () {
+        var idx = $(this).attr('data-open-value');
+        var $target = $('#hiValeurs .hi-accordion__item[data-value-index="' + idx + '"]');
+        if ($target.length) {
+            openAccordionItem($target);
+        }
   });
 
   $(window).on('resize', function () {

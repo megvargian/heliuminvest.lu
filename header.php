@@ -28,20 +28,16 @@
         <div class="hi-page">
             <header class="hi-header">
                 <div class="hi-container hi-header__inner">
-                <a class="hi-logo" href="#top">
+                <a class="hi-logo py-3" href="#top">
                     <img class="hi-logo__image" src="<?php echo esc_url( get_template_directory_uri() . '/inc/assets/images/logo.png' ); ?>" alt="Helium Invest" loading="eager" decoding="async">
                 </a>
                 <nav class="hi-nav">
-                    <a href="#approche">Approche</a>
+                    <a href="#approche">A propos</a>
                     <a href="#strategie">Stratégie</a>
                     <a href="#valeurs">Valeurs</a>
                     <a href="#philanthropie">Philanthropie</a>
-                    <a href="#contact">Contact</a>
+                    <a href="#contact">Nous Contacter</a>
                 </nav>
-                <a href="#contact" class="hi-btn hi-btn--ghost-dark hi-header__cta">Nous contacter</a>
-                <button class="hi-burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false">
-                    <span></span><span></span><span></span>
-                </button>
                 </div>
             </header>
     <script>
