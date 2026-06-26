@@ -25,13 +25,27 @@
 
 <body <?php body_class(); ?>>
     <div id="page" class="site main_page_wrapper">
-        <header id="masthead" class="header-container" role="banner">
-            <nav class="w-100">
-            </nav>
-        </header>
-    </div>
+        <div class="hi-page">
+            <header class="hi-header">
+                <div class="hi-container hi-header__inner">
+                <a class="hi-logo" href="#top">
+                    <img class="hi-logo__image" src="<?php echo esc_url( get_template_directory_uri() . '/inc/assets/images/logo.png' ); ?>" alt="Helium Invest" loading="eager" decoding="async">
+                </a>
+                <nav class="hi-nav">
+                    <a href="#approche">Approche</a>
+                    <a href="#strategie">Stratégie</a>
+                    <a href="#valeurs">Valeurs</a>
+                    <a href="#philanthropie">Philanthropie</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                <a href="#contact" class="hi-btn hi-btn--ghost-dark hi-header__cta">Nous contacter</a>
+                <button class="hi-burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+                </div>
+            </header>
     <script>
-    jQuery(document).ready(function($) {
-    });
+        jQuery(document).ready(function($) {
+        });
     </script>
     <div class="site-content">

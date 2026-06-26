@@ -121,6 +121,8 @@ add_action('after_setup_theme', 'wp_bootstrap_starter_content_width', 0);
  */
 function wp_bootstrap_starter_scripts()
 {
+    wp_enqueue_style('helium-google-fonts', 'https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap', array(), null);
+
     // load bootstrap css
     wp_enqueue_style('wp-bootstrap-starter-bootstrap-css', get_template_directory_uri() . '/inc/assets/css/bootstrap.min.css');
 
