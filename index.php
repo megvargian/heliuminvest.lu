@@ -33,22 +33,31 @@ get_header();
 </section>
 
 <!-- ============ INTRO ============ -->
-<section class="hi-section" id="approche">
+<section class="hi-section hi-section--about" id="approche">
 <div class="hi-container hi-intro">
     <div class="hi-intro__left">
-    <span class="hi-eyebrow">— À propos</span>
-    <h2 class="hi-h2">Une plateforme d'investissement<br>indépendante</h2>
+    <span class="hi-eyebrow hi-eyebrow--about"><span class="hi-eyebrow__num">01</span> À PROPOS</span>
+    <h2 class="hi-h2 hi-intro__title">
+        <span class="hi-intro__title-line">Une plateforme</span><br>
+        <span class="hi-intro__title-line">d'investissement</span><br>
+        <span class="hi-intro__title-line">indépendante</span>
+    </h2>
     </div>
     <div class="hi-intro__right">
-    <p>
-        Helium Invest est une société d'investissement indépendante qui combine
-        discipline financière et vision de long terme, au service de partenaires
-        exigeants et engagés.
+    <p class="hi-intro__lead">
+        Helium Invest s'est construite autour d'une conviction forte : investir
+        avec rigueur, accompagner dans la durée et créer de la valeur de manière
+        responsable.
     </p>
     <p>
-        Notre équipe pluridisciplinaire intervient à chaque étape, de l'analyse
-        stratégique au déploiement opérationnel, en passant par le pilotage de la
-        performance et de l'impact social.
+        En tant qu'actionnaire historique de Murex, Helium Invest a participé au
+        développement d'une plateforme technologique complexe, devenue une
+        référence internationale pour de nombreuses institutions financières,
+        fruit de plus de 40 ans de croissance continue.
+    </p>
+    <p>
+        Aujourd'hui, nous nous appuyons sur cette expérience pour développer un
+        portefeuille robuste, performant et porteur de sens.
     </p>
     </div>
 </div>
@@ -150,12 +159,12 @@ get_header();
 </section>
 
 <!-- ============ PHILANTHROPIE (onglets) ============ -->
-<section class="hi-section hi-section--dark" id="philanthropie">
+<section class="hi-section hi-section--philanthropy" id="philanthropie">
 <div class="hi-container">
     <div class="hi-phil__head">
-    <span class="hi-eyebrow hi-eyebrow--light">— Philanthropie</span>
-    <h2 class="hi-h2 hi-h2--light">Un engagement durable pour le progrès social</h2>
-    <p class="hi-section__lede hi-section__lede--light">
+    <span class="hi-eyebrow hi-eyebrow--phil"><span class="hi-eyebrow__num">04</span> Philanthropie</span>
+    <h2 class="hi-h2 hi-phil__title">Un engagement durable pour le progrès social</h2>
+    <p class="hi-section__lede hi-section__lede--phil">
         L'engagement social d'Helium Invest s'inscrit dans la durée, avec un
         attachement particulier pour le Liban.
     </p>
@@ -179,7 +188,7 @@ get_header();
         </p>
         <span class="hi-phil__tag">— Universités · Bourses</span>
         </div>
-        <div class="hi-phil__media" aria-hidden="true"><!-- image à insérer --></div>
+        <div class="hi-phil__media" aria-hidden="true"></div>
     </div>
 
     <div class="hi-phil__panel" data-panel="sante">
@@ -193,7 +202,7 @@ get_header();
         </p>
         <span class="hi-phil__tag">— Hôpitaux · Recherche</span>
         </div>
-        <div class="hi-phil__media" aria-hidden="true"><!-- image à insérer --></div>
+        <div class="hi-phil__media" aria-hidden="true"></div>
     </div>
 
     <div class="hi-phil__panel" data-panel="liberte">
@@ -207,7 +216,7 @@ get_header();
         </p>
         <span class="hi-phil__tag">— Journalisme · L'Orient-Le Jour</span>
         </div>
-        <div class="hi-phil__media" aria-hidden="true"><!-- image à insérer --></div>
+        <div class="hi-phil__media" aria-hidden="true"></div>
     </div>
 
     <div class="hi-phil__panel" data-panel="environnement">
@@ -220,7 +229,7 @@ get_header();
         </p>
         <span class="hi-phil__tag">— ONG · Biodiversité</span>
         </div>
-        <div class="hi-phil__media" aria-hidden="true"><!-- image à insérer --></div>
+        <div class="hi-phil__media" aria-hidden="true"></div>
     </div>
     </div>
 
@@ -236,20 +245,19 @@ get_header();
 <section class="hi-section" id="contact">
 <div class="hi-container hi-contact">
     <div class="hi-contact__left">
-    <span class="hi-eyebrow">— Contact</span>
-    <h2 class="hi-h2">Échangeons</h2>
-    <p>
+    <span class="hi-eyebrow hi-eyebrow--contact">Contact</span>
+    <p class="hi-contact__intro">
         Pour toute demande d'information, proposition de partenariat ou prise de
         contact, vous pouvez nous écrire.
     </p>
     <dl class="hi-contact__meta">
         <div>
         <dt>Email</dt>
-        <dd><a href="mailto:info@example.com">info@example.com</a></dd>
+        <dd><a href="mailto:info@example.com">email</a></dd>
         </div>
         <div>
-        <dt>Bureaux</dt>
-        <dd>Beyrouth&nbsp;/&nbsp;Paris</dd>
+        <dt>Adresse</dt>
+        <dd>Beyrouth / Paris</dd>
         </div>
     </dl>
     </div>
@@ -264,11 +272,13 @@ get_header();
         <input type="text" id="hiSubject" name="subject" placeholder="Objet de votre demande">
     </div>
     <div class="hi-field">
-        <label for="hiMessage">Message</label>
+        <label for="hiMessage">Description</label>
         <textarea id="hiMessage" name="message" rows="4" placeholder="Votre message" required></textarea>
     </div>
-    <button type="submit" class="hi-btn hi-btn--dark hi-contact__submit">Envoyer</button>
-    <p class="hi-form__success" id="hiFormSuccess">Merci, votre message a bien été envoyé.</p>
+    <div class="hi-contact__actions">
+        <button type="submit" class="hi-contact__submit">ENVOYER</button>
+        <p class="hi-form__success" id="hiFormSuccess">Merci, votre message a bien été envoyé.</p>
+    </div>
     </form>
 </div>
 </section>
