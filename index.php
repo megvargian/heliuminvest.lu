@@ -188,7 +188,9 @@ get_header();
         </p>
         <span class="hi-phil__tag">— Universités · Bourses</span>
         </div>
-        <div class="hi-phil__media" aria-hidden="true"></div>
+        <div class="hi-phil__media" aria-hidden="true">
+        <img src="<?php echo esc_url( get_template_directory_uri() . '/inc/assets/images/education.jpg' ); ?>" alt="Éducation" loading="lazy" decoding="async">
+        </div>
     </div>
 
     <div class="hi-phil__panel" data-panel="sante">
@@ -202,7 +204,9 @@ get_header();
         </p>
         <span class="hi-phil__tag">— Hôpitaux · Recherche</span>
         </div>
-        <div class="hi-phil__media" aria-hidden="true"></div>
+        <div class="hi-phil__media" aria-hidden="true">
+        <img src="<?php echo esc_url( get_template_directory_uri() . '/inc/assets/images/sante.jpg' ); ?>" alt="Santé" loading="lazy" decoding="async">
+        </div>
     </div>
 
     <div class="hi-phil__panel" data-panel="liberte">
@@ -216,7 +220,9 @@ get_header();
         </p>
         <span class="hi-phil__tag">— Journalisme · L'Orient-Le Jour</span>
         </div>
-        <div class="hi-phil__media" aria-hidden="true"></div>
+        <div class="hi-phil__media" aria-hidden="true">
+        <img src="<?php echo esc_url( get_template_directory_uri() . '/inc/assets/images/liberte.jpg' ); ?>" alt="Liberté d'expression" loading="lazy" decoding="async">
+        </div>
     </div>
 
     <div class="hi-phil__panel" data-panel="environnement">
@@ -229,7 +235,9 @@ get_header();
         </p>
         <span class="hi-phil__tag">— ONG · Biodiversité</span>
         </div>
-        <div class="hi-phil__media" aria-hidden="true"></div>
+        <div class="hi-phil__media" aria-hidden="true">
+        <img src="<?php echo esc_url( get_template_directory_uri() . '/inc/assets/images/environnement.jpg' ); ?>" alt="Environnement" loading="lazy" decoding="async">
+        </div>
     </div>
     </div>
 

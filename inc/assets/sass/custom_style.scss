@@ -570,9 +570,16 @@ body.hide_scroll{
     width: 100%;
     aspect-ratio: 1.27/1;
     border-radius: 24px;
-    background-image: linear-gradient(180deg, #dbe8f3 0%, #f9fbfd 45%, #a2ce7f 45%, #8fbe69 100%);
+    overflow: hidden;
     border: 1px solid #d7ddd9;
+    background: #fff;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .5);
+  }
+  .hi-phil__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
   .hi-phil__footnote {
     margin-top: 48px;
