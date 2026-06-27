@@ -261,7 +261,7 @@ get_header();
     <dl class="hi-contact__meta">
         <div>
         <dt>Email</dt>
-        <dd><a href="mailto:info@example.com">email</a></dd>
+        <dd><a href="mailto:info@example.com" target="_blank">email</a></dd>
         </div>
         <div>
         <dt>Adresse</dt>
@@ -295,11 +295,42 @@ get_header();
 jQuery(function ($) {
 
   /* ----- Mobile burger menu ----- */
-  $('.hi-burger').on('click', function () {
-    var open = $(this).attr('aria-expanded') === 'true';
-    $(this).attr('aria-expanded', !open);
-    $('.hi-nav').slideToggle(200);
-  });
+    var $page = $('.hi-page');
+    var $burger = $('.hi-burger');
+    var $menu = $('.hi-nav');
+    var $backdrop = $('.hi-menu-backdrop');
+
+    function setMobileMenu(isOpen) {
+        $page.toggleClass('is-menu-open', isOpen);
+        $('body').toggleClass('hi-menu-open', isOpen);
+        $burger.attr('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
+    $burger.on('click', function () {
+        setMobileMenu(!$page.hasClass('is-menu-open'));
+    });
+
+    $backdrop.on('click', function () {
+        setMobileMenu(false);
+    });
+
+    $menu.find('a').on('click', function () {
+        if (window.matchMedia('(max-width: 900px)').matches) {
+            setMobileMenu(false);
+        }
+    });
+
+    $(document).on('keydown', function (e) {
+        if (e.key === 'Escape' && $page.hasClass('is-menu-open')) {
+            setMobileMenu(false);
+        }
+    });
+
+    $(window).on('resize', function () {
+        if (window.innerWidth > 900) {
+            setMobileMenu(false);
+        }
+    });
 
   /* ----- Accordion (Valeurs) ----- */
     function setAccordionHeight($item) {

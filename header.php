@@ -31,14 +31,20 @@
                 <a class="hi-logo py-3" href="#top">
                     <img class="hi-logo__image" src="<?php echo esc_url( get_template_directory_uri() . '/inc/assets/images/logo.png' ); ?>" alt="Helium Invest" loading="eager" decoding="async">
                 </a>
-                <nav class="hi-nav">
+                <nav class="hi-nav" id="mobile-navigation">
                     <a href="#approche">A propos</a>
                     <a href="#strategie">Stratégie</a>
                     <a href="#valeurs">Valeurs</a>
                     <a href="#philanthropie">Philanthropie</a>
                     <a href="#contact">Nous Contacter</a>
                 </nav>
+                <button class="hi-burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 </div>
+                <div class="hi-menu-backdrop" aria-hidden="true"></div>
             </header>
     <script>
         jQuery(document).ready(function($) {
