@@ -302,6 +302,10 @@ get_header();
 
 <script>
 jQuery(function($) {
+    var contactFormConfig = {
+        ajaxUrl: '<?php echo esc_url(admin_url('admin-ajax.php')); ?>',
+        nonce: '<?php echo esc_js(wp_create_nonce('helium_contact_form')); ?>'
+    };
 
     /* ----- Mobile burger menu ----- */
     var $page = $('.hi-page');
@@ -448,14 +452,44 @@ jQuery(function($) {
         e.preventDefault();
         var $form = $(this);
         var $success = $('#hiFormSuccess');
+        var $submit = $form.find('.hi-contact__submit');
 
-        // TODO: replace with your real submission (AJAX to WP / Contact Form 7 / etc.)
-        $success.addClass('is-visible');
-        $form.find('input, textarea').val('');
+        $submit.prop('disabled', true);
 
-        setTimeout(function() {
-            $success.removeClass('is-visible');
-        }, 4000);
+        $.ajax({
+            url: contactFormConfig.ajaxUrl,
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                action: 'helium_contact_form',
+                nonce: contactFormConfig.nonce,
+                email: $.trim($('#hiEmail').val()),
+                subject: $.trim($('#hiSubject').val()),
+                message: $.trim($('#hiMessage').val())
+            }
+        }).done(function(response) {
+            if (!response || !response.success) {
+                window.alert(response && response.data && response.data.message ? response.data.message : 'L\'envoi du message a echoue.');
+                return;
+            }
+
+            $success.text(response.data.message).addClass('is-visible');
+            $form.find('input, textarea').val('');
+        }).fail(function(xhr) {
+            var message = 'L\'envoi du message a echoue. Merci de reessayer.';
+
+            if (xhr.responseJSON && xhr.responseJSON.data && xhr.responseJSON.data.message) {
+                message = xhr.responseJSON.data.message;
+            }
+
+            window.alert(message);
+        }).always(function() {
+            $submit.prop('disabled', false);
+
+            setTimeout(function() {
+                $success.removeClass('is-visible');
+            }, 4000);
+        });
     });
 
 });

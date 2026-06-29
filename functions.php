@@ -258,3 +258,87 @@ function my_acf_init_block_types()
 function isMob(){
     return is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "mobile"));
 }
+
+function helium_contact_form_recipient()
+{
+    return 'contact@heliuminvest.lu';
+}
+
+function helium_handle_contact_form_submission()
+{
+    check_ajax_referer('helium_contact_form', 'nonce');
+
+    $email = isset($_POST['email']) ? sanitize_email(wp_unslash($_POST['email'])) : '';
+    $subject = isset($_POST['subject']) ? sanitize_text_field(wp_unslash($_POST['subject'])) : '';
+    $message = isset($_POST['message']) ? sanitize_textarea_field(wp_unslash($_POST['message'])) : '';
+
+    if (!is_email($email)) {
+        wp_send_json_error(array(
+            'message' => 'Veuillez renseigner une adresse email valide.',
+        ), 400);
+    }
+
+    if ($message === '') {
+        wp_send_json_error(array(
+            'message' => 'Veuillez renseigner votre message.',
+        ), 400);
+    }
+
+    if ($subject === '') {
+        $subject = 'Demande via le formulaire de contact';
+    }
+
+    $recipient = helium_contact_form_recipient();
+    $site_name = wp_specialchars_decode(get_bloginfo('name'), ENT_QUOTES);
+
+    $notification_subject = sprintf('[%s] %s', $site_name, $subject);
+    $notification_body = implode("\n", array(
+        'Nouveau message depuis le formulaire de contact.',
+        '',
+        'Email du client : ' . $email,
+        'Sujet : ' . $subject,
+        '',
+        'Message :',
+        $message,
+    ));
+
+    $thank_you_subject = 'Merci pour votre message';
+    $thank_you_body = implode("\n", array(
+        'Bonjour,',
+        '',
+        'Merci pour votre message. Nous avons bien recu votre demande et nous reviendrons vers vous rapidement.',
+        '',
+        'Recapitulatif de votre message :',
+        'Sujet : ' . $subject,
+        'Message : ' . $message,
+        '',
+        'Helium Invest',
+        'contact@heliuminvest.lu',
+    ));
+
+    $notification_headers = array(
+        'Content-Type: text/plain; charset=UTF-8',
+        'From: Helium Invest <' . $recipient . '>',
+        'Reply-To: ' . $email,
+    );
+
+    $thank_you_headers = array(
+        'Content-Type: text/plain; charset=UTF-8',
+        'From: Helium Invest <' . $recipient . '>',
+    );
+
+    $notification_sent = wp_mail($recipient, $notification_subject, $notification_body, $notification_headers);
+    $thank_you_sent = wp_mail($email, $thank_you_subject, $thank_you_body, $thank_you_headers);
+
+    if (!$notification_sent || !$thank_you_sent) {
+        wp_send_json_error(array(
+            'message' => 'L\'envoi du message a echoue. Merci de reessayer dans un instant.',
+        ), 500);
+    }
+
+    wp_send_json_success(array(
+        'message' => 'Merci, votre message a bien ete envoye.',
+    ));
+}
+add_action('wp_ajax_helium_contact_form', 'helium_handle_contact_form_submission');
+add_action('wp_ajax_nopriv_helium_contact_form', 'helium_handle_contact_form_submission');
