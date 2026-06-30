@@ -253,6 +253,72 @@ function my_acf_init_block_types()
         //         'keywords'          => array('testimonial', 'quote'),
         //     )
         // );
+        acf_register_block_type(
+            array(
+                'name'              => 'approche-en-deaux-temps',
+                'title'             => __('Approche en deux temps'),
+                'description'       => __('This is the "Approche en deux temps" block.'),
+                'render_template'   => 'blocks/approche-en-deaux-temps_block.php',
+                'category'          => 'formatting',
+                'icon'              => 'admin-comments',
+                'keywords'          => array('testimonial', 'quote'),
+            )
+        );
+        acf_register_block_type(
+            array(
+                'name'              => 'contact',
+                'title'             => __('Contact'),
+                'description'       => __('This is the "Contact" block.'),
+                'render_template'   => 'blocks/contact_block.php',
+                'category'          => 'formatting',
+                'icon'              => 'admin-comments',
+                'keywords'          => array('testimonial', 'quote'),
+            )
+        );
+        acf_register_block_type(
+            array(
+                'name'              => 'hero',
+                'title'             => __('Hero'),
+                'description'       => __('This is the "Hero" block.'),
+                'render_template'   => 'blocks/hero_block.php',
+                'category'          => 'formatting',
+                'icon'              => 'admin-comments',
+                'keywords'          => array('testimonial', 'quote'),
+            )
+        );
+        acf_register_block_type(
+            array(
+                'name'              => 'intro',
+                'title'             => __('Intro'),
+                'description'       => __('This is the "Intro" block.'),
+                'render_template'   => 'blocks/intro_block.php',
+                'category'          => 'formatting',
+                'icon'              => 'admin-comments',
+                'keywords'          => array('testimonial', 'quote'),
+            )
+        );
+        acf_register_block_type(
+            array(
+                'name'              => 'philantropie',
+                'title'             => __('Philantropie'),
+                'description'       => __('This is the "Philantropie" block.'),
+                'render_template'   => 'blocks/philantropie_block.php',
+                'category'          => 'formatting',
+                'icon'              => 'admin-comments',
+                'keywords'          => array('testimonial', 'quote'),
+            )
+        );
+        acf_register_block_type(
+            array(
+                'name'              => 'valeurs',
+                'title'             => __('Valeurs'),
+                'description'       => __('This is the "Valeurs" block.'),
+                'render_template'   => 'blocks/values_block.php',
+                'category'          => 'formatting',
+                'icon'              => 'admin-comments',
+                'keywords'          => array('testimonial', 'quote'),
+            )
+        );
     }
 }
 function isMob(){

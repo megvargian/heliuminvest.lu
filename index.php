@@ -5,13 +5,13 @@
 get_header();
 ?>
 <?php
-	// while ( have_posts() ) : the_post();
-    //     the_content();
-	// endwhile;
+	while ( have_posts() ) : the_post();
+        the_content();
+	endwhile;
 ?>
 
 <!-- ============ HERO ============ -->
-<section class="hi-hero" id="top">
+<!-- <section class="hi-hero" id="top">
     <div class="hi-container hi-hero__inner">
         <div class="hi-hero__copy">
             <span class="hi-eyebrow"><span class="line"></span> Plateforme d'investissement indépendante</span>
@@ -32,10 +32,10 @@ get_header();
                 alt="" loading="eager" decoding="async">
         </div>
     </div>
-</section>
+</section> -->
 
 <!-- ============ INTRO ============ -->
-<section class="hi-section hi-section--about" id="approche">
+<!-- <section class="hi-section hi-section--about" id="approche">
     <div class="hi-container hi-intro">
         <div class="hi-intro__left">
             <span class="hi-eyebrow hi-eyebrow--about"><span class="hi-eyebrow__num">01</span> À PROPOS</span>
@@ -63,10 +63,10 @@ get_header();
             </p>
         </div>
     </div>
-</section>
-
+</section> -->
+ph
 <!-- ============ APPROCHE EN DEUX TEMPS ============ -->
-<section class="hi-section hi-section--tint" id="strategie">
+<!-- <section class="hi-section hi-section--tint" id="strategie">
     <div class="hi-container">
         <span class="hi-eyebrow hi-eyebrow--strategy"><span class="hi-eyebrow__num">02</span> Notre stratégie</span>
         <h2 class="hi-h2 hi-h2--spaced hi-strategy__title">Une approche en deux temps</h2>
@@ -105,10 +105,10 @@ get_header();
             </article>
         </div>
     </div>
-</section>
+</section> -->
 
 <!-- ============ VALEURS ============ -->
-<section class="hi-section" id="valeurs">
+<!-- <section class="hi-section" id="valeurs">
     <div class="hi-container">
         <span class="hi-eyebrow hi-eyebrow--values"><span class="hi-eyebrow__num">03</span> Valeurs</span>
         <h2 class="hi-h2 hi-h2--spaced">Des valeurs ancrées dans notre histoire</h2>
@@ -161,10 +161,10 @@ get_header();
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <!-- ============ PHILANTHROPIE (onglets) ============ -->
-<section class="hi-section hi-section--philanthropy" id="philanthropie">
+<!-- <section class="hi-section hi-section--philanthropy" id="philanthropie">
     <div class="hi-container">
         <div class="hi-phil__head">
             <span class="hi-eyebrow hi-eyebrow--phil"><span class="hi-eyebrow__num">04</span> Philanthropie</span>
@@ -212,7 +212,7 @@ get_header();
                 </div>
                 <div class="hi-phil__media" aria-hidden="true">
                     <img src="<?php echo esc_url( get_template_directory_uri() . '/inc/assets/images/sante.jpg' ); ?>"
-                        alt="Santé" loading="lazy" decoding="async">
+                        alt="Santé" loading="eager" decoding="async">
                 </div>
             </div>
 
@@ -229,7 +229,7 @@ get_header();
                 </div>
                 <div class="hi-phil__media" aria-hidden="true">
                     <img src="<?php echo esc_url( get_template_directory_uri() . '/inc/assets/images/liberte.jpg' ); ?>"
-                        alt="Liberté d'expression" loading="lazy" decoding="async">
+                        alt="Liberté d'expression" loading="eager" decoding="async">
                 </div>
             </div>
 
@@ -245,7 +245,7 @@ get_header();
                 </div>
                 <div class="hi-phil__media" aria-hidden="true">
                     <img src="<?php echo esc_url( get_template_directory_uri() . '/inc/assets/images/environnement.jpg' ); ?>"
-                        alt="Environnement" loading="lazy" decoding="async">
+                        alt="Environnement" loading="eager" decoding="async">
                 </div>
             </div>
         </div>
@@ -256,10 +256,10 @@ get_header();
             et de la vitalité du débat public.
         </p>
     </div>
-</section>
+</section> -->
 
 <!-- ============ CONTACT ============ -->
-<section class="hi-section" id="contact">
+<!-- <section class="hi-section" id="contact">
     <div class="hi-container hi-contact">
         <div class="hi-contact__left">
             <span class="hi-eyebrow hi-eyebrow--contact">Contact</span>
@@ -298,7 +298,7 @@ get_header();
             </div>
         </form>
     </div>
-</section>
+</section> -->
 
 <script>
 jQuery(function($) {
