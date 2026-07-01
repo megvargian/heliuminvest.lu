@@ -9,19 +9,18 @@ $all_fields = get_fields();
 <section class="hi-section" id="contact">
     <div class="hi-container hi-contact">
         <div class="hi-contact__left">
-            <span class="hi-eyebrow hi-eyebrow--contact">Contact</span>
+            <span class="hi-eyebrow hi-eyebrow--contact"><?php echo esc_html( $all_fields['title'] ); ?></span>
             <p class="hi-contact__intro">
-                Pour toute demande d'information, proposition de partenariat ou prise de
-                contact, vous pouvez nous écrire.
+                <?php echo esc_html( $all_fields['description'] ); ?>
             </p>
             <dl class="hi-contact__meta">
                 <div>
                     <dt>Email</dt>
-                    <dd><a href="mailto:contact@heliuminvest.lu" target="_blank">contact@heliuminvest.lu</a></dd>
+                    <dd><a href="mailto:<?php echo esc_attr( $all_fields['email'] ); ?>" target="_blank"><?php echo esc_html( $all_fields['email'] ); ?></a></dd>
                 </div>
                 <div>
                     <dt>Adresse</dt>
-                    <dd>Beyrouth / Paris</dd>
+                    <dd><?php echo esc_html( $all_fields['adresse'] ); ?></dd>
                 </div>
             </dl>
         </div>
